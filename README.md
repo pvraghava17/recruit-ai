@@ -17,7 +17,72 @@ Recruit AI automates resume evaluation using AI by:
 - Frontend: Lovable  
 - Backend: n8n  
 - AI: Prompt-based evaluation (Gemini)
-- Architecture: API-driven workflow  
+- Architecture: API-driven workflow
+
+## Backend Architecture (n8n Workflows)
+
+The backend is designed as a modular system with multiple n8n workflows, each exposed as an API and integrated with the frontend (Lovable). Each workflow handles a specific function to ensure scalability, clarity, and maintainability.
+
+### 🔐 Authentication Layer
+
+#### Send Login Code
+<img width="1321" height="337" alt="Send login code to recruiter email" src="https://github.com/user-attachments/assets/b806217a-4cbe-4fa1-af6b-a98d10429d88" />
+
+- Generates a one-time login code  
+- Sends the code to the recruiter via email  
+- Stores email and code for verification  
+
+#### Verify Login Code
+<img width="1186" height="480" alt="Verify login code entered by recruiter" src="https://github.com/user-attachments/assets/b4ed553b-3e2f-4fc7-b3d6-07758897e8ec" />
+
+- Validates the login code entered by the recruiter
+- Authenticates user access to the platform  
+- Returns success or error response to frontend  
+
+### 📄 Job Management Layer
+
+#### Create Job Role
+<img width="1130" height="292" alt="Create and Store job description" src="https://github.com/user-attachments/assets/f8d5f238-8dc6-49a3-9c10-064d4b0d2a37" />
+
+- Accepts job title and job description  
+- Generates unique Job ID  
+- Stores job details mapped to user  
+
+#### List Job Roles
+<img width="1064" height="311" alt="Fetch job roles to display to recruiter" src="https://github.com/user-attachments/assets/fb265f08-2df3-4b25-9fa4-a91a9b20ec50" />
+
+- Fetches all job roles for the logged-in user  
+- Displays job title and descriptions on dashboard  
+
+### 🤖 AI Evaluation Layer
+
+#### Resume Analysis (ATS)
+<img width="1715" height="516" alt="Compare JD and Resume and provide output" src="https://github.com/user-attachments/assets/9c27081a-af10-4d46-a2c4-108d8e50d9c8" />
+
+- Accepts resume (PDF/Text) and job description  
+- Extracts text from PDF if required  
+- Uses AI model to evaluate resume against JD  
+- Generates ATS score, strengths, gaps, and recommendation for interview  
+
+### 📊 Candidate Management Layer
+
+#### Save Candidate Result
+<img width="842" height="273" alt="Save cadidate decision Accept or reject" src="https://github.com/user-attachments/assets/da0dd6fa-e7c8-443a-867d-874b7c9c95a4" />
+
+- Stores candidate evaluation results  
+- Saves ATS score, decision, and job mapping  
+
+#### Candidate Result Notification
+<img width="1128" height="428" alt="Send email to candidate for Accept or Reject" src="https://github.com/user-attachments/assets/ff35b1a6-f234-4db6-9b4d-d64e5af76728" />
+
+- Sends evaluation result to candidate via email  
+- Confirms successful communication  
+
+#### List Candidates
+<img width="1095" height="290" alt="Fetch and display candidate results to recruiter" src="https://github.com/user-attachments/assets/c9287df4-cad1-4893-be75-89e25d4786c5" />
+
+- Fetches all candidates for a job role  
+- Displays email, score, and selection status  
 
 ## How It Works
 ### Recruiter Flow
