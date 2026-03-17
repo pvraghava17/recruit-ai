@@ -73,7 +73,7 @@ The backend is designed as a modular system with multiple n8n workflows, each ex
 - Saves ATS score, decision, and job mapping  
 
 #### Candidate Result Notification
-<img width="1128" height="428" alt="Send email to candidate for Accept or Reject" src="https://github.com/user-attachments/assets/ff35b1a6-f234-4db6-9b4d-d64e5af76728" />
+<img width="1128" height="428" alt="Send email to candidate for Accept or Reject" src="https://github.com/user-attachments/assets/dfaa7eb1-9c34-46ee-851b-ead68eea25ac" />
 
 - Sends evaluation result to candidate via email  
 - Confirms successful communication  
